@@ -20,7 +20,7 @@ FantasyMedia JavaScript Style Guide
 
 使用字面量声明变量：
 
-```
+```javascript
 // 对象
 var obj = {};
 
@@ -39,7 +39,7 @@ var str = '';
     - `null`
     - `undefined`
 
-    ```
+    ```javascript
     var foo = 1,
         bar = foo;
 
@@ -54,7 +54,7 @@ var str = '';
     - `array`
     - `function`
 
-    ```
+    ```javascript
     var foo = [1, 2],
         bar = foo;
 
@@ -69,7 +69,7 @@ var str = '';
 
 - 不要使用JavaScript中的[保留字](http://es5.github.io/#x7.6.1)，例如：
 
-```
+```javascript
 // bad
 var superman = {
     default: {
@@ -91,7 +91,7 @@ var superman = {
 
 - 在不知道数组长度的情况下，使用Array#push
 
-```
+```javascript
 var someStack = [];
 
 // bad
@@ -103,7 +103,7 @@ someStack.push('foo');
 
 - 使用Array#slice复制数组（[jsperf](http://jsperf.com/converting-arguments-to-an-array/7)）
 
-```
+```javascript
 var len = items.length,
     itemsCopy = [],
     i;
@@ -123,13 +123,13 @@ itemsCopy = items.slice();
 
 - 统一使用单引号，个别情况（例如以下）除外：
 
-```
+```javascript
 var foo = someVar.replace(/"/g, "''");
 ```
 
 - 使用更容易阅读的`+`来链接过长的（一般约定为80）字符串：
 
-```
+```javascript
 // bad
 var errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
 
@@ -149,7 +149,7 @@ var errorMessage = 'This is a super long error that was thrown because ' +
 
 *以下例子的情况经常会在我们拼装Ajax返回数据、塞到原有元素中的时候出现(不使用template)的情况时*
 
-```
+```javascript
 var items,
     messages,
     length,
@@ -197,7 +197,7 @@ function inbox(messages) {
 
 - 函数表达式
 
-```
+```javascript
 // anonymous function expression
 var anonymous = function() {
   return true;
@@ -216,7 +216,7 @@ var named = function named() {
 
 - 不要将函数参数命名为`arguments`，这会覆盖每个函数自带的`arguments`的优先级:
 
-```
+```javascript
 // bad
 function nope(name, options, arguments) {
   // ...stuff...
@@ -236,7 +236,7 @@ function yup(name, options, args) {
 
 **[StackOverFlow讨论](http://stackoverflow.com/questions/4968406/javascript-property-access-dot-notation-vs-brackets)**
 
-```
+```javascript
 var luke = {
   jedi: true,
   age: 28
@@ -251,7 +251,7 @@ var isJedi = luke.jedi;
 
 这也是上一条中使用`[]`的好处之一，可以获取*带变量的属性*
 
-```
+```javascript
 var luke = {
   jedi: true,
   age: 28
@@ -270,7 +270,7 @@ var isJedi = getProp('jedi');
 
 - 使用`var`关键字声明变量，避免产生无用的全局变量进而影响全局的命名空间
 
-```
+```javascript
 // bad
 foo = 'bar';
 
@@ -280,7 +280,7 @@ var foo = 'bar';
 
 - 在作用域的顶部声明变量
 
-```
+```javascript
 function foo () {
     var num = 1;
     var test = true;
@@ -292,7 +292,7 @@ function foo () {
 
 - 同时声明多个变量时，可以采取以下两种形式，但是在自己的代码中需要统一风格
 
-```
+```javascript
 // 使用一个var
 var foo = 'bar',
     isSelected = true,
@@ -308,7 +308,7 @@ var num = 0;
 
 - **千万**不要写成以下形式：
 
-```
+```javascript
 var foo = 'bar'
   , isSelected = true
   , num = 0;
@@ -316,7 +316,7 @@ var foo = 'bar'
 
 - 每一行只声明一个变量:
 
-```
+```javascript
 // good
 var foo = 'bar',
     isSelected = true,
@@ -331,7 +331,7 @@ var foo = 'bar',
 
 - 可以*适当的*将`=`对齐:
 
-```
+```javascript
 var foo        = 'bar',
     isSelected = true,
     num        = 0;
