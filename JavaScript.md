@@ -6,9 +6,13 @@ FantasyMedia JavaScript Style Guide
 ## Table of Contents
 
 1. [Types](#types)
-    1. [Objects](#objects)
-    2. [Arrays](#arrays)
-    3. [String](#string)
+    - [Object](#object)
+    - [Array](#array)
+    - [String](#string)
+    - [Function](#function)
+2. [Propertyies](#properties)
+3. [Variables](#variables)
+
 
 ## Types
 
@@ -58,6 +62,8 @@ var str = '';
 
     console.log(foo[0], bar[0]); // => 9, 9
     ```
+
+[↑ back to top](#table-of-contents)
 
 ### Object
 
@@ -110,6 +116,8 @@ for (i = 0; i < len; i++) {
 // good
 itemsCopy = items.slice();
 ```
+
+[↑ back to top](#table-of-contents)
 
 ### String
 
@@ -182,3 +190,151 @@ function inbox(messages) {
   return '<ul><li>' + items.join('</li><li>') + '</li></ul>';
 }
 ```
+
+[↑ back to top](#table-of-contents)
+
+### Function
+
+- 函数表达式
+
+```
+// anonymous function expression
+var anonymous = function() {
+  return true;
+};
+
+// named function expression
+var named = function named() {
+  return true;
+};
+
+// immediately-invoked function expression (IIFE)
+(function() {
+  console.log('Welcome to the Internet. Please follow me.');
+})();
+```
+
+- 不要将函数参数命名为`arguments`，这会覆盖每个函数自带的`arguments`的优先级:
+
+```
+// bad
+function nope(name, options, arguments) {
+  // ...stuff...
+}
+
+// good
+function yup(name, options, args) {
+  // ...stuff...
+}
+```
+
+[↑ back to top](#table-of-contents)
+
+## Properties
+
+- 统一使用`.`或者`[]`获取对象的属性：
+
+**[StackOverFlow讨论](http://stackoverflow.com/questions/4968406/javascript-property-access-dot-notation-vs-brackets)**
+
+```
+var luke = {
+  jedi: true,
+  age: 28
+};
+
+// 两者都可以获得对象的属性，但是在代码中需要统一风格
+var isJedi = luke['jedi'];
+var isJedi = luke.jedi;
+```
+
+- 使用`[]`获取带变量的属性值：
+
+这也是上一条中使用`[]`的好处之一，可以获取*带变量的属性*
+
+```
+var luke = {
+  jedi: true,
+  age: 28
+};
+
+function getProp(prop) {
+  return luke[prop];
+}
+
+var isJedi = getProp('jedi');
+```
+
+[↑ back to top](#table-of-contents)
+
+## Variables
+
+- 使用`var`关键字声明变量，避免产生无用的全局变量进而影响全局的命名空间
+
+```
+// bad
+foo = 'bar';
+
+// good
+var foo = 'bar';
+```
+
+- 在作用域的顶部声明变量
+
+```
+function foo () {
+    var num = 1;
+    var test = true;
+
+    //..some stuff..
+}
+
+```
+
+- 同时声明多个变量时，可以采取以下两种形式，但是在自己的代码中需要统一风格
+
+```
+// 使用一个var
+var foo = 'bar',
+    isSelected = true,
+    num = 0;
+
+// 使用多个var
+var foo = 'bar';
+var isSelected = true;
+var num = 0;
+```
+
+关于第一种形式还有以下几个注意点：
+
+- **千万**不要写成以下形式：
+
+```
+var foo = 'bar'
+  , isSelected = true
+  , num = 0;
+```
+
+- 每一行只声明一个变量:
+
+```
+// good
+var foo = 'bar',
+    isSelected = true,
+    num = 0,
+    i;
+
+// bad
+var foo = 'bar',
+    isSelected = true,
+    num = 0, i;
+```
+
+- 可以*适当的*将`=`对齐:
+
+```
+var foo        = 'bar',
+    isSelected = true,
+    num        = 0;
+```
+
+[↑ back to top](#table-of-contents)
