@@ -10,9 +10,15 @@ FantasyMedia JavaScript Style Guide
     - [Array](#array)
     - [String](#string)
     - [Function](#function)
-2. [Propertyies](#properties)
+2. [Properties](#properties)
 3. [Variables](#variables)
-
+4. [Equality](#equality)
+5. [Blocks](#blocks)
+6. [Comments](#comments)
+7. [Whitespace](#whitespace)
+8. [Punctuation](#punctuation)
+    - [Commas](#commas)
+    - [Semicolons](#Semicolons)
 
 ## Types
 
@@ -335,6 +341,178 @@ var foo = 'bar',
 var foo        = 'bar',
     isSelected = true,
     num        = 0;
+```
+
+[↑ back to top](#table-of-contents)
+
+## Equality
+
+- 使用`===`和`!==`，而不是`==`和`!=`
+
+需要知道自己在使用比较运算符的时候，运算符的两边是什么类型
+
+## Blocks
+
+- 使用`{}`，即使里面只有一行代码：
+
+```javascript
+if (test) {
+    return false;
+}
+```
+
+以下风格亦是可以接受的：
+
+```javascript
+if (test) return false;
+```
+
+- 函数体必须使用`{}`：
+
+```javascript
+function test () {
+    return false;
+}
+```
+
+[↑ back to top](#table-of-contents)
+
+## Comments
+
+使用规范的注释能够帮助队友更好的阅读你的代码，这一点在协作开发的时候相当重要：
+
+- 文件级和函数级的注释风格：
+
+```javascript
+/**
+ * This is a test function
+ *
+ * @param  Int val
+ * @return Boolean
+ */
+function test (val) {
+    return val === 1;
+}
+```
+
+- 单行注释：
+
+单行注释务必写到单独的一行，如：
+
+```javascript
+// This is for lock
+var lock = false;
+```
+
+而不要将注释写到语句之后：
+
+```javascript
+var lock = false; // This is for lock
+```
+
+[↑ back to top](#table-of-contents)
+
+## Whitespace
+
+- 使用4个或者2个空格组成的soft tabs
+
+> 为什么是4个或者2个？
+
+由于开发者之间的习惯差异比较大，所以不能强制要求使用4个或者2个空格，但是**必须**保证自己的代码中的风格是一致的。
+
+关于这一点的设置在大部分编辑器、IDE中都可以直接设置，例如：
+
+1. Atom编辑器可以直接勾选soft tabs选项
+2. Sublime Text可以通过`"tab_size": 4, "translate_tabs_to_spaces": true,`进行设置
+
+其他IDE中可以在各自的首选项中进行设置。
+
+- 在`{`之前添加1个空格：
+
+函数声明：
+
+```javascript
+// Bad
+function test (){
+    //
+}
+// Good
+function test () {
+    //
+}
+```
+- 参数之间添加1个空格：
+
+```javascript
+test(a, b, {
+    c: d
+});
+```
+
+- 操作符与变量、值之间添加空格：
+
+```javascript
+// Bad
+var foo=1+2;
+
+// Good
+var foo = 1 + 2;
+```
+
+[↑ back to top](#table-of-contents)
+
+## Punctuation
+
+### Commas
+
+在[Variables](#variables)一节中已经提及了一次`,`的规范，接下来做一点点补充
+
+- 不要使用多余的`,`
+
+```javascript
+// Wrong
+var cold = {
+    name: 'char',
+    age: '24',
+    gender: 'male',
+}
+
+// Right
+var cold = {
+    name: 'char',
+    age: '24',
+    gender: 'male'
+}
+```
+
+### Semicolons
+
+必须**正确**使用分号
+
+- 变量、函数声明：
+
+```javascript
+var foo = 'bar';
+
+var test = function () {
+    return false;
+};
+```
+
+- 函数调用：
+
+以下是正确使用分号的方式：
+
+```javascript
+test();
+
+(function () {
+    return foo = 'bar';
+})();
+
+;(function () {
+    return bar = 'foo';
+})();
 ```
 
 [↑ back to top](#table-of-contents)
