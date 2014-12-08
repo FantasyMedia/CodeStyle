@@ -10,6 +10,7 @@ FantasyMedia JavaScript Style Guide
     - [Array](#array)
     - [String](#string)
     - [Function](#function)
+    - [Casting](#casting)
 2. [Properties](#properties)
 3. [Variables](#variables)
 4. [Equality](#equality)
@@ -232,6 +233,25 @@ function nope(name, options, arguments) {
 function yup(name, options, args) {
   // ...stuff...
 }
+```
+
+[↑ back to top](#table-of-contents)
+
+### Casting
+
+- 在使用`parseInt()`对字符串与数字之间进行类型转换的时候，必须增加`radix`，如：
+
+```javascript
+var num = '10';
+
+num = parseInt(num, 10);
+```
+
+- 对数字和布尔值进行转换的时候，使用`!!`：
+
+```javascript
+var condition = 0;
+condition = !!condition;
 ```
 
 [↑ back to top](#table-of-contents)
